@@ -2,7 +2,7 @@
 title: "pthread异步返回(1)"
 date: 2019-09-10 11:02:32
 tags:
-  - C++
+  - cpp
   - pthread
 comments: false
 ---

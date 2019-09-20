@@ -2,7 +2,7 @@
 title: "文件指针缓冲区大小 & 变长char数组"
 date: 2019-09-19 17:44:50
 tags:
-  - C++
+  - cpp
   - char
 comments: false
 ---
