@@ -86,4 +86,4 @@ event count: 1
 <pre><code>write!
 event count: 1</code></pre><p>从 kernel 代码来看，ET/LT 模式的处理逻辑几乎完全相同，差别仅在于 LT 模式在 event 发生时不会将其从 ready list 中移除，略为增大了 event 处理过程中 kernel space 中记录数据的大小。</p>
 <p>如何选择就完全看需求了，一般都还是使用LT模式更为安全，ET模式对代码逻辑性要求较高。</p>
-</article><br><br><span class="next-post"><a href="/2019/09/19/fp-buffer-size-dynamic-char-array/" itemprop="url">Older Post ⇒</a></span><br><br><br></main></body></html>
+</article><br><br><span class="next-post"><a href="/2019/09/19/fp-buffer-size-dynamic-char-array/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2019/09/23/pthread-async-return-2/" itemprop="url">⇐ Next Post </a></span><br><br><br></main></body></html>
