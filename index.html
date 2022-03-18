@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Wayne Cheng</title><meta name="description"><meta name="generator" content="Wayne Cheng"><meta name="author" content="Wayne Cheng"><meta name="keywords" content="boyweb, coder"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="Wayne Cheng" title="Wayne Cheng" itemprop="headline">Wayne Cheng</a></h1><p itemprop="description">Record what I like.</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name"><a href="/ " alt="home" title="home" itemprop="url">home</a></li><li itemprop="name"><a href="/articles" alt="articles" title="articles" itemprop="url">articles</a></li><li itemprop="name"><a href="/author" alt="author" title="author" itemprop="url">author</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><h4 class="page-title">Recent Articles</h4><a href="/2022/03/18/tae/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">《时间之神的猫》隐私政策及相关说明</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">《时间之神的猫》隐私政策本游戏尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，本游戏会按照本隐私权政策的规定使用和披露您的个人信息。但本游戏将以高度的勤勉、审慎义务对待这些信息。本游戏会不定时更新本隐私权政策。您在同意本游戏服务使用协议之时，即表示您已经同意本隐私权政策的全部内容。本隐私权政策属于本游戏服务使用协议不可分割的一部分。
+
+1. 本游戏为单机游戏，不会需要任何您的个人信息。
+2. 本游戏不会向任</p></article></a><a href="/2019/09/23/pthread-async-return-2/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">pthread异步返回(2)</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">有时间继续写了，接上回。
+关于current_rid加锁的部分就不详细赘述了，先来看下 condition_variable 的消耗是怎么样的。
+测试方法如下：
+
+开启一个线程，不断调用 condition_variable 的 notify_one 方法，不用 sleep
+主线程不断循环调用 wait 方法，监听事件
+查看系统的 cpu 消耗
+使用 INT 信号终止进程，并计算 QPS
+
+#include &amp;lt;condition_</p></article></a><a href="/2019/09/20/epoll-et-lt/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">epoll的ET/LT模式</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">最近在使用 epoll 的时候，看到了一个样例里面使用了 EPOLLET，之前从来没有用过，于是去研究了一下是干什么的。
+epoll 的工作模式分为了两种，ET 和 LT，这两种的区别就是，ET 模式在触发事件之后，如果没有操作其中的 fd，下次也不会再通知了，而 LT 模式则会要求对 fd 进行操作，否则下次会再次通知。
+写个代码试一下就能看出效果。
+int fds[2];
+
+void *write_thread(void *p)
+{</p></article></a><a href="/2019/09/19/fp-buffer-size-dynamic-char-array/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">文件指针缓冲区大小 &amp; 变长char数组</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">最近在使用管道的时候，因为不想每次都调用 write，想通过文件指针去操作，而且也不想每次写完都 flush，所以需要设置缓冲区来自动触发 flush 事件，先上样例。
+int main()
+{
+    int fds[2];
+    if (pipe(fds) &amp;lt; 0)
+    {
+        return -1;
+    }
+
+    FILE * in;
+    FILE * out;
+
+    in = fdopen(</p></article></a><a href="/2019/09/10/pthread-async-return-1/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">pthread异步返回(1)</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">最近莫名其妙的碰到了一个需求，首先要并发发送多个请求，然后在没有请求返回的时候会阻塞，并且该阻塞会有超时时间，然后只要有请求返回的时候就会解除阻塞并且执行后续的操作。
+其实挺正常一需求，但是要使用 C++来实现，两眼一抹黑，除了锁想不到别的方式了，但是考虑到高并发的情况，这个锁可能会把 cpu 的 sys 打得特别高，这对程序性能来说，问题很大，不管怎么着先试一下看看确切的情况。
+先写一个模拟请求的函数。
+void *sim_reque</p></article></a><a href="/2019/08/29/hhvm-variant-binary-data/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">HHVM扩展中使用二进制字符串</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">最近都忙成狗，连写点东西的时间都没有，不过最近确实也学了不少东西。
+工作中用到了HHVM，不知道是怎么想的，项目里面要把一部分C++的功能移到HHVM中，结果我一看源码就懵逼了，各种指针操作，位运算，引用啥啥的，完全不想去想怎么在PHP中去实现这一坨逻辑，所以干脆就直接暴力一点，使用C++扩展解决算了。
+在迁移的过程中，也碰到了一个坑，就是关于二进制字符串的处理，C++的代码类似下面这段。
+// _m_buf - char * - 编码</p></article></a><a href="/2019/08/15/leetcode-00004/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">LeetCode - 00004</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">最开始只想到了 O(m+n)的算法，没想到二分该怎么分，看了一下题解，学习了。
+要利用中位数的概念来做。
+// 对于数组a，m是中位数
+if (a.size() % 2 == 0)
+{
+    m = (a[a.size() / 2] + a[a.size() / 2 + 1]) / 2;
+}
+else
+{
+    m = a[a.size() / 2];
+}
+假定有两个有序数组，a 和 b，将他们各分成两份，叫 al/ar，bl/br</p></article></a><a href="/2019/08/14/leetcode-00003/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">LeetCode - 00003</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">利用动态规划来做，时间复杂度是 O(n)，状态转移方程如下
+# l - 末尾为当前位置的最大长度
+# last - 某个字符上一次出现位置
+
+l[n] = min(l[n-1] + 1, n - last[s[n]]);所以其实代码还能再精简一点的，有时间再改吧，不需要那么多判断。
+class Solution
+{
+public:
+    int lengthOfLongestSubstring(string s)
+    {
+    </p></article></a><a href="/2019/08/14/leetcode-00002/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">LeetCode - 00002</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">纯模拟题，没仔细想，写的比较草率，有时间再来优化。
+class Solution
+{
+public:
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+    {
+        int next = 0;
+        ListNode *p, *q;
+        ListNode *r = NULL, *n = NULL;
+        p = l1;
+     </p></article></a><a href="/2019/08/14/leetcode-00001/" class="article"><article itemscope itemprop="blogPost" itemtype="https://schema.org/BlogPosting" class="item"><h2 itemprop="headline">LeetCode - 00001</h2><span class="post-meta"></span><p itemprop="text" class="post-excerpt">
+之前都是自己写写就完了，自己从来没有记录过，算是从头开始吧。
+
+最开始的想法是将结果做了个排序，大于的 target 的值排除，然后头尾指针移动判断。这个时间复杂度依赖于排序的时间复杂度，因为指针移动判断是 O(n)，所以就算用上了快排也是 O(nlogn)。
+后来发现没有重复的值，所以能够直接用 map 来做，用空间换时间，时间复杂度和空间复杂度都是 O(n)。
+class Solution
+{
+public:
+    vector</p></article></a></main></body></html>
